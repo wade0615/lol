@@ -59,14 +59,13 @@ export default {
 
   methods: {
     async apple() {
-      console.log('calling api', this.$sportsData);
       await this.$sportsData.get_test()
         .then((data) => {
           console.log(data);
         });
       await this.$sportsData.get_teams()
         .then((data) => {
-          console.log(data);
+          console.log('get_teams', data);
         });
     },
   },
