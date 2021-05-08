@@ -23,15 +23,15 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // try air.js
-var airRouter = require('./routes/air');
-app.use('/air', airRouter);
-
 let allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   next();
 }
-app.use(allowCrossDomain)
+app.use(allowCrossDomain);
+
+var airRouter = require('./routes/air');
+app.use('/air', airRouter);
 // try air.js
 
 // catch 404 and forward to error handler
