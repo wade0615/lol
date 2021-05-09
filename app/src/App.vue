@@ -58,20 +58,23 @@ export default {
   }),
 
   methods: {
-    async apple() {
-      await this.$sportsData.get_test()
-        .then((data) => {
-          console.log(data);
-        });
+    async get_teams() {
       await this.$sportsData.get_teams()
         .then((data) => {
           console.log('get_teams', data);
         });
     },
+    async get_gamesByDate() {
+      await this.$sportsData.get_gamesByDate()
+        .then((data) => {
+          console.log('get_gamesByDate', data);
+        });
+    },
   },
 
   mounted() {
-    this.apple();
+    this.get_teams();
+    this.get_gamesByDate();
   },
 };
 </script>
