@@ -32,6 +32,7 @@ app.use(allowCrossDomain);
 
 var airRouter = require('./routes/air');
 app.use('/teams', airRouter.teams);
+app.use('/areas', airRouter.areas);
 app.use('/gamesByDate', airRouter.gamesByDate);
 // try air.js
 

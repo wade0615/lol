@@ -58,6 +58,12 @@ export default {
   }),
 
   methods: {
+    async get_areas() {
+      await this.$sportsData.get_areas()
+        .then((data) => {
+          console.log('get_areas', data);
+        });
+    },
     async get_teams() {
       await this.$sportsData.get_teams()
         .then((data) => {
@@ -73,6 +79,7 @@ export default {
   },
 
   mounted() {
+    this.get_areas();
     this.get_teams();
     this.get_gamesByDate();
   },
