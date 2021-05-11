@@ -38,30 +38,47 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <div>
+        <h1>
+          {{ name }}
+        </h1>
+        <p>
+          {{ areaName }}
+        </p>
+        <div v-for="season in seasons" :key="season.SeasonId">
+          {{ season.Season }}. {{ season.Name }}
+        </div>
+      </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+// import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
 
   data: () => ({
-    //
+    areaName: String,
+    name: String,
+    seasons: Array,
   }),
 
   methods: {
     async get_competitions() {
       await this.$sportsData.get_competitions()
-        .then((data) => {
-          console.log('get_competitions', data);
+        .then((response) => {
+          console.log('get_competitions', response);
+          const LCK = Object.values(response.data).filter((e) => e.Name === 'LCK')[0];
+          console.log('LCK_competitions', LCK);
+          this.areaName = LCK.AreaName;
+          this.name = LCK.Name;
+          this.seasons = LCK.Seasons;
         });
     },
     async get_seasonTeams() {
