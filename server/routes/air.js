@@ -41,27 +41,27 @@ var args = {
 // module.exports = sportsDataIO;
 router.get('/', function(req, res, next) {
   // console.log(req.url, req.baseUrl)
-  if(req.baseUrl.includes('teams')) {
-    console.log('teams')
-    let url='https://fly.sportsdata.io/v3/lol/scores/json/Teams';
+  if(req.baseUrl.includes('competitions')) {
+    console.log('competitions')
+    let url='https://fly.sportsdata.io/v3/lol/scores/json/Competitions';
     client.get(url, args, function (data, response) { 
       res.json({...data})
     });
   };
-  if(req.baseUrl.includes('areas')) {
-    console.log('areas')
-    let url='https://fly.sportsdata.io/v3/lol/scores/json/Areas';
+  if(req.baseUrl.includes('seasonTeams')) {
+    console.log('SeasonTeams')
+    let url=' https://fly.sportsdata.io/v3/lol/scores/json/SeasonTeams/100000235';
     client.get(url, args, function (data, response) { 
       res.json({...data})
     });
   };
-  if(req.baseUrl.includes('gamesByDate')) {
-    console.log('gamesByDate')
-    let url='https://fly.sportsdata.io/v3/lol/scores/json/GamesByDate/2021-03-25';
-    client.get(url, args, function (data, response) { 
-      res.json({...data})
-    });
-  }
+  // if(req.baseUrl.includes('gamesByDate')) {
+  //   console.log('gamesByDate')
+  //   let url='https://fly.sportsdata.io/v3/lol/scores/json/GamesByDate/2021-03-25';
+  //   client.get(url, args, function (data, response) { 
+  //     res.json({...data})
+  //   });
+  // }
 })
 
 module.exports = router;

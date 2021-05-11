@@ -7,18 +7,18 @@ Vue.use(VueAxios, axios);
 const baseURL = 'http://192.168.50.200:3000';
 
 const lolapi = {
-  async get_areas() {
-    return axios.get(`${baseURL}/areas`)
+  async get_competitions() {
+    return axios.get(`${baseURL}/competitions`)
       .then((response) => response);
   },
-  async get_teams() {
-    return axios.get(`${baseURL}/teams`)
+  async get_seasonTeams() {
+    return axios.get(`${baseURL}/seasonTeams`)
       .then((response) => response);
   },
-  async get_gamesByDate() {
-    return axios.get(`${baseURL}/gamesByDate`)
-      .then((response) => response);
-  },
+  // async get_gamesByDate() {
+  //   return axios.get(`${baseURL}/gamesByDate`)
+  //     .then((response) => response);
+  // },
 };
 export default { lolapi };
 // Vue.axios.get(api).then((response) => {

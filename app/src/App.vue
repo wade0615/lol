@@ -58,30 +58,30 @@ export default {
   }),
 
   methods: {
-    async get_areas() {
-      await this.$sportsData.get_areas()
+    async get_competitions() {
+      await this.$sportsData.get_competitions()
         .then((data) => {
-          console.log('get_areas', data);
+          console.log('get_competitions', data);
         });
     },
-    async get_teams() {
-      await this.$sportsData.get_teams()
+    async get_seasonTeams() {
+      await this.$sportsData.get_seasonTeams()
         .then((data) => {
-          console.log('get_teams', data);
+          console.log('get_seasonTeams', data);
         });
     },
-    async get_gamesByDate() {
-      await this.$sportsData.get_gamesByDate()
-        .then((data) => {
-          console.log('get_gamesByDate', data);
-        });
-    },
+    // async get_gamesByDate() {
+    //   await this.$sportsData.get_gamesByDate()
+    //     .then((data) => {
+    //       console.log('get_gamesByDate', data);
+    //     });
+    // },
   },
 
   mounted() {
-    this.get_areas();
-    this.get_teams();
-    this.get_gamesByDate();
+    this.get_competitions();
+    this.get_seasonTeams();
+    // this.get_gamesByDate();
   },
 };
 </script>

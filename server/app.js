@@ -31,9 +31,9 @@ let allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 var airRouter = require('./routes/air');
-app.use('/teams', airRouter);
-app.use('/areas', airRouter);
-app.use('/gamesByDate', airRouter);
+app.use('/competitions', airRouter);
+app.use('/seasonTeams', airRouter);
+// app.use('/gamesByDate', airRouter);
 // try air.js
 
 // catch 404 and forward to error handler
