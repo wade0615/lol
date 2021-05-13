@@ -37,7 +37,7 @@ export default {
   data: () => ({
     areaName: String,
     name: String,
-    seasons: Array,
+    seasons: [],
     select_season: { Season: '', Name: '' },
   }),
 
@@ -50,7 +50,9 @@ export default {
           console.log('LCK_competitions', LCK);
           this.areaName = LCK.AreaName;
           this.name = LCK.Name;
-          this.seasons = LCK.Seasons.reverse();
+          let seasons = Array;
+          seasons = LCK.Seasons;
+          this.seasons = seasons.reverse();
         });
     },
     async get_seasonTeams() {
