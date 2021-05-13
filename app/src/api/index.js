@@ -4,7 +4,7 @@ import VueAxios from 'vue-axios';
 
 Vue.use(VueAxios, axios);
 
-const baseURL = 'http://192.168.50.200:3000';
+const baseURL = 'http://localhost:3000';
 
 const lolapi = {
   async get_competitions() {
