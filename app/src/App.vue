@@ -10,28 +10,35 @@
         <p>
           {{ areaName }}
         </p>
-        <div v-for="season in seasons" :key="season.SeasonId">
-          {{ season.Season }}. {{ season.Name }}
-        </div>
+        <v-select
+          v-model="select_season"
+          :hint="`${select_season.Season}, ${select_season.Name}`"
+          :items="seasons"
+          item-text="Name"
+          item-value="SeasonId"
+          label="Select Season"
+          persistent-hint
+          return-object
+          single-line
+          solo
+        ></v-select>
       </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
-
 export default {
   name: 'App',
 
   components: {
-    // HelloWorld,
   },
 
   data: () => ({
     areaName: String,
     name: String,
     seasons: Array,
+    select_season: { Season: '', Name: '' },
   }),
 
   methods: {
@@ -43,7 +50,7 @@ export default {
           console.log('LCK_competitions', LCK);
           this.areaName = LCK.AreaName;
           this.name = LCK.Name;
-          this.seasons = LCK.Seasons;
+          this.seasons = LCK.Seasons.reverse();
         });
     },
     async get_seasonTeams() {

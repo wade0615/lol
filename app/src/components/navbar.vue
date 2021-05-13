@@ -67,8 +67,7 @@ export default {
 
 <style rel="stylesheet/sass" lang="sass" scoped>
 #navbar
-  position: sticky
-  top: 0
+  position: relative
 </style>
 
 // 使用方式
