@@ -40,7 +40,7 @@ var args = {
 // }
 // module.exports = sportsDataIO;
 router.get('/', function(req, res, next) {
-  // console.log(req.url, req.baseUrl)
+  console.log(req.url, req.baseUrl)
   if(req.baseUrl.includes('competitions')) {
     console.log('competitions')
     let url='https://fly.sportsdata.io/v3/lol/scores/json/Competitions';
@@ -50,7 +50,14 @@ router.get('/', function(req, res, next) {
   };
   if(req.baseUrl.includes('seasonTeams')) {
     console.log('SeasonTeams')
-    let url=' https://fly.sportsdata.io/v3/lol/scores/json/SeasonTeams/100000235';
+    let url='https://fly.sportsdata.io/v3/lol/scores/json/SeasonTeams/100000235';
+    client.get(url, args, function (data, response) { 
+      res.json({...data})
+    });
+  };
+  if(req.baseUrl.includes('standings')) {
+    console.log('standings')
+    let url='https://fly.sportsdata.io/v3/lol/scores/json/Standings/100001186';
     client.get(url, args, function (data, response) { 
       res.json({...data})
     });
