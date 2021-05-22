@@ -2,7 +2,7 @@
   <v-app>
     <Navbar />
 
-    <v-main>
+    <v-main class="pl-3 pr-3 pl-sm-6 pr-sm-6">
       <div>
         <h1>
           {{ name }}
@@ -22,6 +22,15 @@
           single-line
           solo
         ></v-select>
+        <v-data-table
+          dense
+          hide-default-footer
+          :headers="headers"
+          :items="standings"
+          item-key="TeamId"
+          class="elevation-1"
+          sort-by="Order"
+        ></v-data-table>
       </div>
     </v-main>
   </v-app>
@@ -39,6 +48,19 @@ export default {
     name: String,
     seasons: [],
     select_season: { Season: '', Name: '' },
+    standings: [],
+    headers: [
+      {
+        text: '排名',
+        align: 'start',
+        sortable: false,
+        value: 'Order',
+      },
+      { text: '戰隊', value: 'Name' },
+      { text: '勝場數', value: 'Wins' },
+      { text: '敗場數', value: 'Losses' },
+      { text: '積分', value: 'Points' },
+    ],
   }),
 
   methods: {
@@ -63,8 +85,9 @@ export default {
     },
     async get_standings() {
       await this.$sportsData.get_standings()
-        .then((data) => {
-          console.log('get_standings', data);
+        .then((response) => {
+          console.log('get_standings', response);
+          this.standings = Object.values(response.data);
         });
     },
     // async get_gamesByDate() {
@@ -83,3 +106,6 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+</style>
