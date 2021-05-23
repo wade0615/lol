@@ -56,8 +56,8 @@ router.get('/', function(req, res, next) {
     });
   };
   if(req.baseUrl.includes('standings')) {
-    console.log('standings')
-    let url='https://fly.sportsdata.io/v3/lol/scores/json/Standings/100001186';
+    console.log('standings', req.query.id)
+    let url=`https://fly.sportsdata.io/v3/lol/scores/json/Standings/${req.query.id}`;
     client.get(url, args, function (data, response) { 
       res.json({...data})
     });

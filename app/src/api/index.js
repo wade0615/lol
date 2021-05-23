@@ -15,8 +15,8 @@ const lolapi = {
     return axios.get(`${baseURL}/seasonTeams`)
       .then((response) => response);
   },
-  async get_standings() {
-    return axios.get(`${baseURL}/standings`)
+  async get_standings(id) {
+    return axios.get(`${baseURL}/standings?id=${id}`)
       .then((response) => response);
   },
   // async get_gamesByDate() {

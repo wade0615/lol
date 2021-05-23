@@ -12,6 +12,7 @@
         </p>
         <v-select
           v-model="select_season"
+          @change="selected_season"
           :hint="`${select_season.Season}, ${select_season.Name}`"
           :items="seasons"
           item-text="Name"
@@ -64,6 +65,9 @@ export default {
   }),
 
   methods: {
+    selected_season(value) {
+      this.get_standings(value.Rounds[0].RoundId);
+    },
     async get_competitions() {
       await this.$sportsData.get_competitions()
         .then((response) => {
@@ -83,10 +87,9 @@ export default {
           console.log('get_seasonTeams', data);
         });
     },
-    async get_standings() {
-      await this.$sportsData.get_standings()
+    async get_standings(id) {
+      await this.$sportsData.get_standings(id)
         .then((response) => {
-          console.log('get_standings', response);
           this.standings = Object.values(response.data);
         });
     },
@@ -101,7 +104,6 @@ export default {
   mounted() {
     this.get_competitions();
     this.get_seasonTeams();
-    this.get_standings();
     // this.get_gamesByDate();
   },
 };
