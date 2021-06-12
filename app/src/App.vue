@@ -65,8 +65,13 @@ export default {
   }),
 
   methods: {
-    selected_season(value) {
-      this.get_standings(value.Rounds[0].RoundId);
+    async selected_season(value) {
+      console.log('value', value, value.Rounds[0].RoundId);
+      await this.get_standings(value.Rounds[0].RoundId)
+        .then((response) => {
+          this.standings = response;
+          console.log('this.standings', this.standings);
+        });
     },
     async get_competitions() {
       await this.$sportsData.get_competitions()
@@ -88,10 +93,8 @@ export default {
         });
     },
     async get_standings(id) {
-      await this.$sportsData.get_standings(id)
-        .then((response) => {
-          this.standings = Object.values(response.data);
-        });
+      const res = await this.$sportsData.get_standings(id);
+      return Object.values(res.data);
     },
     // async get_gamesByDate() {
     //   await this.$sportsData.get_gamesByDate()
